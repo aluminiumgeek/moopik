@@ -34,7 +34,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        moopik.init();
+        //moopik.init();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -44,7 +44,8 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
+        
+        navigator.notification.alert('Received Event: ' + id);
         console.log('Received Event: ' + id);
     }
 };
