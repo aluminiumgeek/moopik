@@ -4,9 +4,9 @@ var moopik = (function($) {
   self.init = function() {
     log('ininit');
     self.db = window.openDatabase("moopik", "1.0", "Moopik", 1000000);
-    db.transaction(populateDb, dbErr);
+    self.db.transaction(populateDb, dbErr);
     
-    db.transaction(getLocations, dbErr);
+    self.db.transaction(getLocations, dbErr);
     
     navigator.geolocation.getCurrentPosition(geoOnSuccess, geoOnError);
   }
@@ -17,7 +17,7 @@ var moopik = (function($) {
     
     self.position = position;
     
-    db.transaction(function(tx) {
+    self.db.transaction(function(tx) {
       tx.executeSql("INSERT INTO locations(location) VALUES ("+location+")");
     });
   };
