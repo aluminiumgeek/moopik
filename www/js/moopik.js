@@ -91,7 +91,7 @@ var moopik = (function($) {
       <label for="location-'+i+'">'+address+'</label>';
       
       $('.locations').append(html);
-      $('#home').page();
+      $('#home').trigger('create');
     }
   }
 
