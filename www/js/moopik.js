@@ -50,11 +50,13 @@ var moopik = (function($) {
     tx.executeSql(query, [], renderLocations, dbErr);
   }
   
-  function renderLocations(items) {
+  function renderLocations(tx, results) {
     log('renderLocations()');
-    log(JSON.stringify(items));
     
-    return true;
+    var len = results.rows.length;
+    for (var i=0; i<len; i++){
+      log("Data = " + results.rows.item(i).location);
+    }
   }
 
   function dbDone(something) {
