@@ -7,7 +7,9 @@ var moopik = (function($) {
     self.db.transaction(populateDb, dbErr);
     
     self.db.transaction(getLocations, dbErr);
-    
+  }
+  
+  self.locate = function() {
     navigator.geolocation.getCurrentPosition(geoOnSuccess, geoOnError);
   }
   
