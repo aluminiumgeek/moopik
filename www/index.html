@@ -23,18 +23,30 @@
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.2.css">
+        <link rel="stylesheet" href="css/jquery.mobile.icons-1.4.2.css">
+        <link rel="stylesheet" href="css/jquery.mobile.theme-1.4.2.css">
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <title>Moopik</title>
     </head>
     <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+        <div class="app" data-role="page">
+            <div data-role="header">
+                <h1>Previous places</h1>
+            </div>
+            <div role="main" class="ui-content">
+                <form>
+                    <fieldset data-role="controlgroup">
+                        <input type="checkbox" name="checkbox-v-2a" id="checkbox-v-2a">
+                        <label for="checkbox-v-2a">One</label>
+                        <input type="checkbox" name="checkbox-v-2b" id="checkbox-v-2b">
+                        <label for="checkbox-v-2b">Two</label>
+                    </fieldset>
+                </form>
             </div>
         </div>
         <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/lib/jquery.mobile-1.4.2.min.js"></script>
         <script type="text/javascript" src="js/utils.js"></script>
         <script type="text/javascript" src="js/moopik.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
