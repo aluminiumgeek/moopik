@@ -22,7 +22,7 @@ var moopik = (function($) {
     log('Lat: '+lat);
     log('Long: '+lat);
     var georequest = $.ajax({
-      url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=true';//&key='+self.key,
+      url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=true',//&key='+self.key,
       method: 'get'
     })
     
