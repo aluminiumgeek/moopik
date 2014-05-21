@@ -8,7 +8,7 @@ var moopik = (function() {
   
   function geoOnSuccess(position) {
     log('Success');
-    log(position.coord.latitude + ' ' + position.coord.longitude);
+    log(JSON.stringify(position));
   };
   function geoOnError() {
     log('Error while geolocating');
