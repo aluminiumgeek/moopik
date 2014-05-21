@@ -35,7 +35,6 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         log('Initializing moopik');
-        moopik.init();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -47,5 +46,7 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
         
         console.log('Received Event: ' + id);
+        
+        moopik.init();
     }
 };
