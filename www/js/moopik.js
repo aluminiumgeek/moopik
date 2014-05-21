@@ -12,9 +12,18 @@ var moopik = (function() {
   
   function geoOnSuccess(position) {
     log(position.coord.latitude + ' ' + position.coord.longitude);
+    withoutGPS();
   };
   function geoOnError() {
     log('Error while geolocating');
+    withoutGPS();
+  }
+  
+  function withoutGPS() {
+    navigator.geolocation.getCurrentPosition(
+      geoOnSuccess, 
+      geoOnError
+    );
   }
   
   return self;
