@@ -46,10 +46,15 @@ var moopik = (function($) {
   function renderLocations(tx, items) {
     log('renderLocations()');
     log(JSON.stringify(items));
+    
+    return true;
   }
   
   function dbErr(err) {
+    log('Db Error:');
     log(JSON.stringify(err));
+    
+    return false;
   }
   
   return self;
