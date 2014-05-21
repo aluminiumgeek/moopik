@@ -68,3 +68,7 @@
     -webkit-animation:fade 3000ms infinite;
 }
 
+#log {
+  font-size: 8px;
+  color: red;
+}
