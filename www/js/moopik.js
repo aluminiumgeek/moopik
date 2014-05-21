@@ -30,9 +30,15 @@ var moopik = (function($) {
       log('Got google geocode');
       var address;
 
+      if (!data.status) {
+        data = $.parseJSON(data);
+      }
+      
       if (data.status == "OK" && data.results.length > 1) {
         address = data.results[0].formatted_address;
         position.address = address;
+        
+        log('Address: ' + address);
       }
       
       var location = JSON.stringify(position);
