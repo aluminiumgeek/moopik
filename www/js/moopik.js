@@ -14,12 +14,29 @@ var moopik = (function($) {
   
   function geoOnSuccess(position) {
     log('geoOnSuccess()');
-    var location = JSON.stringify(position);
-    log(location);
     
-    self.position = position;
+    var lat = position.coords.latitude;
+    var long = position.coords.longitude;
     
-    self.db.transaction(saveLocation, dbErr, getLocations);
+    $.ajax({
+      url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=true',
+      method: 'get'
+    }).done(function(data) {
+      log('Got google geocode');
+      var address;
+      
+      if (data.results.length > 1) {
+        address = data.results[0].formatted_address;
+        position.address = address;
+      }
+      
+      var location = JSON.stringify(position);
+      log(location);
+    
+      self.position = position;
+    
+      self.db.transaction(saveLocation, dbErr, getLocations);
+    })
   };
   
   function geoOnError() {
