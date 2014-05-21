@@ -28,6 +28,7 @@ var moopik = (function($) {
     
     georequest.done(function(data) {
       log('Got google geocode');
+      log(data);
       var address;
 
       if (!data.status) {
