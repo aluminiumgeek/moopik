@@ -10,10 +10,10 @@ var moopik = (function() {
   }
   
   function geoOnSuccess(position) {
-    alert(position.coord.latitude, position.coord.longitude);
+    log(position.coord.latitude + ' ' + position.coord.longitude);
   };
   function geoOnError() {
-    alert('Error while geolocating');
+    log('Error while geolocating');
   }
   
   return self;
