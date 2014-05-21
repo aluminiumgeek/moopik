@@ -7,6 +7,7 @@ var moopik = (function() {
   }
   
   function geoOnSuccess(position) {
+    log('Success');
     log(position.coord.latitude + ' ' + position.coord.longitude);
   };
   function geoOnError() {
