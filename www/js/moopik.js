@@ -10,6 +10,7 @@ var moopik = (function($) {
   }
   
   self.locate = function() {
+    log('locate()');
     navigator.geolocation.getCurrentPosition(geoOnSuccess, geoOnError);
   }
   
@@ -29,7 +30,7 @@ var moopik = (function($) {
   
   function populateDb(tx) {
     log('populateDb()')
-    tx.ececuteSql("CREATE TABLE IF NOT EXISTS locations(id INTEGER PRIMARY KEY ASC, location TEXT NOT NULL)");
+    tx.executeSql("CREATE TABLE IF NOT EXISTS locations(id INTEGER PRIMARY KEY ASC, location TEXT NOT NULL)");
   }
   
   function getLocations(tx) {
