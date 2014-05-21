@@ -13,22 +13,28 @@ var moopik = (function($) {
   }
   
   function geoOnSuccess(position) {
+    log('geoOnSuccess()');
     var location = JSON.stringify(position);
     log(location);
     
     self.position = position;
     
-    self.db.transaction(function(tx) {
-      tx.executeSql("INSERT INTO locations(location) VALUES ("+location+")");
-    });
+    self.db.transaction(saveLocation, dbErr, getLocations);
   };
+  
   function geoOnError() {
     log('Error while geolocating');
   }
   
+  function saveLocation(tx) {
+    log('saveLocation()');
+    var query = "INSERT INTO locations(location) VALUES (?)";
+    tx.executeSql(query, [JSON.stringify(self.position)], dbDone, dbErr);
+  }
+  
   function populateDb(tx) {
     log('populateDb()');
-    tx.executeSql("CREATE TABLE IF NOT EXISTS locations(id INTEGER PRIMARY KEY ASC, location TEXT NOT NULL)");
+    tx.executeSql("CREATE TABLE IF NOT EXISTS locations(id INTEGER PRIMARY KEY ASC, location TEXT NOT NULL)", [], dbDone, dbErr);
   }
   
   function getLocations() {
@@ -38,17 +44,22 @@ var moopik = (function($) {
     db.transaction(queryDb, dbErr);
   };
   
-  function queryDb() {
+  function queryDb(tx) {
     log('queryDb()');
-    var query = "SELECT location from locations ORDER BY id DESC LIMIT 5";
+    var query = "SELECT location FROM locations";// ORDER BY id DESC LIMIT 5";
     tx.executeSql(query, [], renderLocations, dbErr);
   }
   
-  function renderLocations(tx, items) {
+  function renderLocations(items) {
     log('renderLocations()');
     log(JSON.stringify(items));
     
     return true;
+  }
+
+  function dbDone(something) {
+    log('Db Done:');
+    log(JSON.stringify(something));
   }
   
   function dbErr(err) {
