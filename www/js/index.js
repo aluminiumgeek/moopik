@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var app = {
+/*var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -49,4 +49,9 @@ var app = {
         
         moopik.init();
     }
-};
+};*/
+
+$(document).on('pageinit', '#home', function() {
+  log('Init');
+  moopik.init();
+});
