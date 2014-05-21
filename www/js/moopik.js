@@ -28,12 +28,8 @@ var moopik = (function($) {
     
     georequest.done(function(data) {
       log('Got google geocode');
-      log(data);
+      log(data.status + ' ' + data.results.length);
       var address;
-
-      if (!data.status) {
-        data = $.parseJSON(data);
-      }
       
       if (data.status == "OK" && data.results.length > 1) {
         address = data.results[0].formatted_address;
