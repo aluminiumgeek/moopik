@@ -5,8 +5,6 @@ var moopik = (function($) {
     log('ininit');
     self.db = window.openDatabase("moopik", "1.0", "Moopik", 1000000);
     self.db.transaction(populateDb, dbErr);
-    
-    self.db.transaction(getLocations, dbErr);
   }
   
   self.locate = function() {
@@ -31,16 +29,15 @@ var moopik = (function($) {
   function populateDb(tx) {
     log('populateDb()')
     tx.executeSql("CREATE TABLE IF NOT EXISTS locations(id INTEGER PRIMARY KEY ASC, location TEXT NOT NULL)");
+    
+    self.db.transaction(getLocations, dbErr);
   }
   
   function getLocations(tx) {
-    log('getLocations()')
-    tx.executeSql(
-      "SELECT location from locations ORDER BY id DESC LIMIT 5",
-      [],
-      renderLocations,
-      dbErr
-    );
+    log('getLocations()');
+    
+    var query = "SELECT location from locations ORDER BY id DESC LIMIT 5";
+    tx.executeSql(query, [], renderLocations, dbErr);
   };
   
   function renderLocations(tx, items) {
