@@ -17,14 +17,15 @@ var moopik = (function($) {
     
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
-    
+    log('Lat: '+lat);
+    log('Long: '+lat);
     $.ajax({
       url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=true',
       method: 'get'
     }).done(function(data) {
       log('Got google geocode');
       var address;
-      
+
       if (data.results.length > 1) {
         address = data.results[0].formatted_address;
         position.address = address;
