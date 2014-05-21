@@ -55,7 +55,7 @@
         at https://build.phonegap.com/plugins
     -->
     <gap:plugin name="org.apache.cordova.geolocation" version="0.3.2" />
-    <gap:plugin name="org.apache.cordova.dialogs" version="0.3.2" />
+    <gap:plugin name="org.apache.cordova.dialogs" version="0.2.0" />
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
