@@ -82,6 +82,15 @@ var moopik = (function($) {
     var len = results.rows.length;
     for (var i=0; i<len; i++){
       log("Data = " + results.rows.item(i).location);
+      
+      var location = $.parseJSON(results.rows.item(i).location);
+      
+      var address = location.address ? location.address : location.coords.latitude + ', ' + location.coords.longitude;
+      
+      var html = '<input type="checkbox" name="location-'+i+'" id="location-'+i+'">\
+      <label for="location-'+i+'">'+address+'</label>';
+      
+      $('.locations').append(html);
     }
   }
 
