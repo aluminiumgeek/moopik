@@ -43,8 +43,8 @@ var moopik = (function($) {
       self.db.transaction(saveLocation, dbErr, getLocations);
     });
     
-    georequest.error(function(xhr, status) {
-      log('Error georequest: ' + status);
+    georequest.error(function(xhr, status, err) {
+      log('Error georequest: ' + status + ' ' + err);
     });
   };
   
@@ -91,6 +91,7 @@ var moopik = (function($) {
       <label for="location-'+i+'">'+address+'</label>';
       
       $('.locations').append(html);
+      $('#home').page();
     }
   }
 
