@@ -1,6 +1,8 @@
 var moopik = (function($) {
   var self = {};
   
+  self.key = "AIzaSyARRMJhNZJamLwkCO5-EZbG-aL5IOkIQ1Q";
+  
   self.init = function() {
     log('ininit');
     self.db = window.openDatabase("moopik", "1.0", "Moopik", 1000000);
@@ -19,14 +21,16 @@ var moopik = (function($) {
     var long = position.coords.longitude;
     log('Lat: '+lat);
     log('Long: '+lat);
-    $.ajax({
-      url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=true',
+    var georequest = $.ajax({
+      url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=true&key='+self.key,
       method: 'get'
-    }).done(function(data) {
+    })
+    
+    georequest.done(function(data) {
       log('Got google geocode');
       var address;
 
-      if (data.results.length > 1) {
+      if (data.status == "OK" && data.results.length > 1) {
         address = data.results[0].formatted_address;
         position.address = address;
       }
@@ -37,7 +41,11 @@ var moopik = (function($) {
       self.position = position;
     
       self.db.transaction(saveLocation, dbErr, getLocations);
-    })
+    });
+    
+    georequest.error(function(xhr, status) {
+      log('Error georequest: ' + status);
+    });
   };
   
   function geoOnError() {
