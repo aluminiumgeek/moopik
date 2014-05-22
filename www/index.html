@@ -51,6 +51,7 @@
 
               
               <div id='map' class='hidden'>
+                <a name='map'></a>
                 <div class="ui-field-contain">
                   <label for="horizontal">Horizontal:</label>
                   <select name="horizontal" data-role="slider" data-mini="true">
@@ -64,16 +65,41 @@
                 </div>
 
                 <div class="ui-field-contain">
-                  <input name='linecolor' type='color' id='linecolor' value='#0000ff'/>
+                  <label for="linecolor">Line color: </label>
+                  <input type="text" name='linecolor' value="blue" />
+                </div>
+                <div class="ui-field-contain">
+                  <label for="markercolor">Line color: </label>
+                  <input type="text" name='markercolor' value="0x5555ff" />
                 </div>
 
-                <img  />
+                <div class="ui-field-contain">
+                  <fieldset data-role="controlgroup" data-type="horizontal">
+                    <legend>Map type:</legend>
+                    <input type="radio" name="maptype" id="roadmap" value="roadmap" checked="checked">
+                    <label for="roadmap">Roadmap</label>
+                    <input type="radio" name="maptype" id="satellite" value="satellite">
+                    <label for="satellite">Satellite</label>
+                    <input type="radio" name="maptype" id="terrain" value="terrain">
+                    <label for="terrain">Terrain</label>
+                    <input type="radio" name="maptype" id="hybrid" value="hybrid">
+                    <label for="hybrid">Hybrid</label>
+                  </fieldset>
+                </div>
+
+                <div class="ui-field-contain">
+                  <button class="generate-map ui-shadow ui-btn ui-corner-all">Generate map</button>
+                </div>
+
+                <div class='image'>
+                  <a name='image'></a>
+                  <img  />
+                </div>
               </div>
             </div>
         </div>
         <script type="text/javascript" src="js/lib/jquery.js"></script>
         <script type="text/javascript" src="js/lib/jquery.mobile-1.4.2.min.js"></script>
-        <script type="text/javascript" src="js/lib/colorpicker.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/utils.js"></script>
         <script type="text/javascript" src="js/curved_line.js"></script>

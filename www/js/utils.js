@@ -13,6 +13,14 @@ function getResolution() {
   return [window.innerWidth, window.innerHeight];
 }
 
+function scrollTo(target) {
+  if (target) {
+    $('html, body').animate({
+      scrollTop: target.offset().top
+    }, 1000);
+  }
+}
+
 if (!String.prototype.format) {
   String.prototype.format = function() {
     var args = arguments;

@@ -32,18 +32,20 @@ var moopik = (function($) {
         locations = curved.getPoints(lat_s, lng_s, lat_e, lng_e, h, c);
       }
       
-      var url = 'http://maps.googleapis.com/maps/api/staticmap?size={0}&path=color:{1}|weight:5|{2}&markers=color:{3}|{4}&geodesic=true&sensors=false'.format(
+      var url = 'http://maps.googleapis.com/maps/api/staticmap?size={0}&path=color:{1}|weight:5|{2}&markers=color:{3}|{4}&maptype={5}&geodesic=true&sensors=false'.format(
         '{0}x{1}'.format(self.width, Math.round(self.width/2)), // size
-        '0x0000ff', // color
+        $('input[name="linecolor"]').val(), // color
         locations.join('|'), // polyline                                                                                                                            
-        '0x5555ff', // marker color
-        locations[locations.length-1] // marker coords
+        $('input[name="markercolor"]').val(), // marker color
+        locations[locations.length-1], // marker coords
+        $('input[name="maptype"]:checked').val() // maptype
       )
       log(url);
       
-      $('#map img').attr('src', url);
-      $('#map').slideDown('slow');
-      
+      $('#map .image img').attr('src', url);
+      $('#map .image img').load(function() {
+        scrollTo($('a[name="image"]'));
+      });
     }
     
   };
@@ -166,6 +168,12 @@ var moopik = (function($) {
   
   $('button.map').bind('click', function() {
     log('button.map click');
+    $('#map').slideDown('normal', function() {
+      scrollTo($('a[name="map"]'));
+    });
+  });
+  
+  $('button.generate-map').bind('click', function() {
     self.map();
   });
   

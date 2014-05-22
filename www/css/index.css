@@ -72,3 +72,11 @@
   font-size: 8px;
   color: red;
 }
+
+.hidden {
+  display: none;
+}
+
+#map {
+  
+}
