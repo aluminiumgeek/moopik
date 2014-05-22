@@ -6,7 +6,7 @@ var moopik = (function($) {
   self.init = function() {
     log('ininit');
     self.db = window.openDatabase("moopik", "1.0", "Moopik", 1000000);
-    self.db.transaction(populateDb, dbErr, getLocations);
+    self.db.transaction(populateDb, dbErr, self.locate);
   }
   
   self.locate = function() {
@@ -81,6 +81,14 @@ var moopik = (function($) {
   
   function renderLocations(tx, results) {
     log('renderLocations()');
+
+    var form = '<form>\
+                  <fieldset data-role="controlgroup" class="locations">\
+                    <legend>Previous locations</legend>\
+                      {0}\
+                  </fieldset>\
+                </form>';
+    var html = '';
     
     var len = results.rows.length;
     for (var i=0; i<len; i++){
@@ -90,12 +98,15 @@ var moopik = (function($) {
       
       var address = location.address ? location.address : location.coords.latitude + ', ' + location.coords.longitude;
       
-      var html = '<input type="checkbox" name="location-'+i+'" id="location-'+i+'">\
-      <label for="location-'+i+'">'+address+'</label>';
       
-      $('.locations').append(html);
-      $('#home').trigger('create');
+      html += '<input type="checkbox" name="location-{0}" id="location-{0}">\
+      <label for="location-{0}">{1}</label>'.format(i, address);
     }
+    
+    form = form.format(html);
+    $('.ui-content').append(form);
+    
+    $('#home').trigger('create');
   }
 
   function dbDone(something) {

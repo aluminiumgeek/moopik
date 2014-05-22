@@ -57,5 +57,5 @@ $(document).on('pageinit', '#home', function() {
 });
 
 $(document).on('deviceready', function() {
-  moopik.locate();
+  //moopik.locate();
 });
