@@ -80,3 +80,11 @@
 #map {
   
 }
+
+#map .ui-radio label {
+  font-size: 12px!important;
+}
+
+#home .ui-btn-inline:after {
+  line-height: 22px!important;
+}

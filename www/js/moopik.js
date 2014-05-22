@@ -145,11 +145,11 @@ var moopik = (function($) {
       
       
       html += '<input type="checkbox" name="location-{0}" value="{2}" id="location-{0}">\
-      <label for="location-{0}">{1}</label>'.format(i, address, coords.replace(/ /g, ''));
+      <label for="location-{0}" class="ui-btn-c">{1}</label>'.format(i, address, coords.replace(/ /g, ''));
     }
     
     form = form.format(html);
-    $('#locations').append(form);
+    $('#locations').html(form);
     
     $('#home').trigger('create');
   }
@@ -171,6 +171,12 @@ var moopik = (function($) {
     $('#map').slideDown('normal', function() {
       scrollTo($('a[name="map"]'));
     });
+  });
+  
+  $('button.clear').bind('click', function() {
+    self.db.transaction(function(tx) {
+      tx.executeSql('DROP TABLE locations');
+    }, dbErr, self.init);
   });
   
   $('button.generate-map').bind('click', function() {
