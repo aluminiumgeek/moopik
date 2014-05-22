@@ -3,12 +3,40 @@ var moopik = (function($) {
   
   self.key = "AIzaSyARRMJhNZJamLwkCO5-EZbG-aL5IOkIQ1Q";
   
+  self.width = getResolution()[0];
+  self.height = getResolution()[1];
+  
   self.init = function() {
     log('ininit');
     self.db = window.openDatabase("moopik", "1.0", "Moopik", 1000000);
     self.db.transaction(populateDb, dbErr, self.locate);
   }
   
+  self.map = function() {
+    log('self.map()');
+    
+    var locations = [];
+    $('.locations input[type="checkbox"]:checked').each(function() {
+      log('self.map(): '+$(this).val());
+      locations.push($(this).val());
+    });
+    
+    if (locations.length == 0) {
+      var url = 'http://maps.googleapis.com/maps/api/staticmap?size={0}&path=color:{1}&weight:5|{2}&markers=color:{3}|{4}&geodesic=true&sensors=true'.format(
+        '{0}x{1}'.format(self.width, Math.round(self.width/2)), // size
+        '0x0000ff', // color
+        locations.join('|'), // polyline                                                                                                                            
+        '0x5555ff', // marker color
+        locations[locations.length-1] // marker coords
+      )
+      log(url);
+      $('#map').slideDown('fast');
+      $('#map img').attr('src', url);
+    }
+    
+  };
+  //http://maps.googleapis.com/maps/api/staticmap?size=800x400&path=color:0x0000ff|weight:5|55.8180905,37.6353868|55.9180905,37.6353868|55.9180905,37.8353868&markers=color:0x7777ff|55.9180905,37.8353868&geodesic=true&sensors=false
+
   self.locate = function() {
     log('locate()');
     navigator.geolocation.getCurrentPosition(geoOnSuccess, geoOnError);
@@ -22,7 +50,7 @@ var moopik = (function($) {
     log('Lat: '+lat);
     log('Long: '+lat);
     var georequest = $.ajax({
-      url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=true',//&key='+self.key,
+      url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=true',//&key='+self.key,
       method: 'get'
     })
     
@@ -82,8 +110,8 @@ var moopik = (function($) {
   function renderLocations(tx, results) {
     log('renderLocations()');
 
-    var form = '<form>\
-                  <fieldset data-role="controlgroup" class="locations">\
+    var form = '<form class="locations">\
+                  <fieldset data-role="controlgroup">\
                     <legend>Previous locations</legend>\
                       {0}\
                   </fieldset>\
@@ -92,23 +120,25 @@ var moopik = (function($) {
     
     var len = results.rows.length;
     for (var i=0; i<len; i++){
-      log("Data = " + results.rows.item(i).location);
+      //log("Data = " + results.rows.item(i).location);
       
       var location = $.parseJSON(results.rows.item(i).location);
       
-      var address = location.address ? location.address : location.coords.latitude + ', ' + location.coords.longitude;
+      var coords = location.coords.latitude + ', ' + location.coords.longitude
+      
+      var address = location.address ? location.address : coords;
       
       
-      html += '<input type="checkbox" name="location-{0}" id="location-{0}">\
-      <label for="location-{0}">{1}</label>'.format(i, address);
+      html += '<input type="checkbox" name="location-{0}" value="{2}" id="location-{0}">\
+      <label for="location-{0}">{1}</label>'.format(i, address, coords.replace(/ /g, ''));
     }
     
     form = form.format(html);
-    $('.ui-content').append(form);
+    $('#locations').append(form);
     
     $('#home').trigger('create');
   }
-
+  
   function dbDone(something) {
     log('Db Done:');
     log(JSON.stringify(something));
@@ -120,6 +150,11 @@ var moopik = (function($) {
     
     return false;
   }
+  
+  $('button.map').bind('click', function() {
+    log('button.map click');
+    self.map();
+  });
   
   return self;
 })(jQuery);

@@ -37,17 +37,29 @@
                 <h1>Moopik</h1>
             </div>
             <div role="main" class="ui-content">
-                <form>
-                    <fieldset data-role="controlgroup" class="locations">
-                        <legend>Previous locations</legend>
-                    </fieldset>
-                </form>
+              <div id='locations'></div>
+
+              <button class='photo ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-left'>
+                Photo
+              </button>
+              <button class='map ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-left'>
+                Map
+              </button>
+              <button class='clear ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-left'>
+                Clear
+              </button>
+
+              
+              <div id='map' class='hidden'>
+                <img src='' />
+              </div>
             </div>
         </div>
         <script type="text/javascript" src="js/lib/jquery.js"></script>
         <script type="text/javascript" src="js/lib/jquery.mobile-1.4.2.min.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/utils.js"></script>
+        <script type="text/javascript" src="js/curved_line.js"></script>
         <script type="text/javascript" src="js/moopik.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">

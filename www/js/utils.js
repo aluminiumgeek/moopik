@@ -9,6 +9,10 @@ function log(msg) {
   cnt++;
 }
 
+function getResolution() {
+  return [window.innerWidth, window.innerHeight];
+}
+
 if (!String.prototype.format) {
   String.prototype.format = function() {
     var args = arguments;
