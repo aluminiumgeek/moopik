@@ -1,7 +1,7 @@
 var curved = (function() {
   self = {};
   
-  self.getPoints = function(LatStart, LngStart, LatEnd, LngEnd, Horizontal) {
+  self.getPoints = function(LatStart, LngStart, LatEnd, LngEnd, Horizontal, Curviness) {
     var result = [];
     
     var Resolution = 0.1;
@@ -18,7 +18,7 @@ var curved = (function() {
                 
     for (point = 0; point <= 1; point += Resolution) {
       Points.push(point);
-      offset = (0.6 * Math.sin((Math.PI * point / 1)));
+      offset = (Curviness * Math.sin((Math.PI * point / 1)));
       PointsOffset.push(offset);
     }
                         

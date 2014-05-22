@@ -21,8 +21,18 @@ var moopik = (function($) {
       locations.push($(this).val());
     });
     
-    if (locations.length == 0) {
-      var url = 'http://maps.googleapis.com/maps/api/staticmap?size={0}&path=color:{1}&weight:5|{2}&markers=color:{3}|{4}&geodesic=true&sensors=true'.format(
+    if (locations.length > 0) {
+      if (locations.length == 2) {
+        lat_s = parseFloat(locations[0].split(',')[0]);
+        lng_s = parseFloat(locations[0].split(',')[1]);
+        lat_e = parseFloat(locations[1].split(',')[0]);
+        lng_e = parseFloat(locations[1].split(',')[1]);
+        h = $('select[name="horizontal"]').val() == '1' ? true : false;
+        c = parseFloat($('input[name="curviness"]').val())/10;
+        locations = curved.getPoints(lat_s, lng_s, lat_e, lng_e, h, c);
+      }
+      
+      var url = 'http://maps.googleapis.com/maps/api/staticmap?size={0}&path=color:{1}|weight:5|{2}&markers=color:{3}|{4}&geodesic=true&sensors=false'.format(
         '{0}x{1}'.format(self.width, Math.round(self.width/2)), // size
         '0x0000ff', // color
         locations.join('|'), // polyline                                                                                                                            
@@ -30,8 +40,10 @@ var moopik = (function($) {
         locations[locations.length-1] // marker coords
       )
       log(url);
-      $('#map').slideDown('fast');
+      
       $('#map img').attr('src', url);
+      $('#map').slideDown('slow');
+      
     }
     
   };
@@ -81,6 +93,7 @@ var moopik = (function($) {
   
   function geoOnError() {
     log('Error while geolocating');
+    getLocations();
   }
   
   function saveLocation(tx) {
