@@ -177,7 +177,13 @@ var moopik = (function($) {
   }
   
   function photoOnSuccess(image) {
+    log('photoOnSuccess()');
     $('#photo img').attr('data:image/jpeg;base64,'+image);
+  }
+  
+  function photoOnError(msg) {
+    log('photoOnError()');
+    log(msg);
   }
   
   $('button.map').bind('click', function() {
