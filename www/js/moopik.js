@@ -212,8 +212,7 @@ var moopik = (function($) {
     var options = {
       allowEdit: true,
       destinationType: navigator.camera.DestinationType.FILE_URI,
-      targetWidth: self.width,
-      targetHeight: Math.round(self.width/2)
+      targetWidth: self.width
     }
     navigator.camera.getPicture(photoOnSuccess, photoOnError, options);
   });
