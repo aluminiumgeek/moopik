@@ -17,8 +17,6 @@ var moopik = (function($) {
     log('self.map()');
     
     if (!map_loading) {
-      map_loading = true;
-      
       var locations = [];
       $('.locations input[type="checkbox"]:checked').each(function() {
         log('self.map(): '+$(this).val());
@@ -51,10 +49,6 @@ var moopik = (function($) {
           scrollTo($('a[name="image"]'));
           map_loading = false;
         });
-        
-        setTimeout(function() {
-          map_loading = false;
-        }, 1000);
       }
     }
     
@@ -204,7 +198,7 @@ var moopik = (function($) {
     self.map();
   });
   
-  $('#photo_source .camera').bind('click', function(e) {
+  $('#photo_source .camera, #photo_source .storage').bind('click', function(e) {
     e.preventDefault();
     
     $('#photo_source').popup("close");
@@ -214,6 +208,11 @@ var moopik = (function($) {
       destinationType: navigator.camera.DestinationType.FILE_URI,
       targetWidth: self.width
     }
+    
+    if ($(this).hasClass('storage')) {
+      options.sourceType = navigator.camera.PictureSourceType.PHOTOLIBRARY;
+    }
+    
     navigator.camera.getPicture(photoOnSuccess, photoOnError, options);
   });
   
