@@ -43,13 +43,23 @@
             <div role="main" class="ui-content">
               <div id='locations'></div>
 
-              <button class='photo ui-btn ui-btn-b ui-corner-all ui-btn-inline ui-icon-flat-camera ui-btn-icon-left'>
-                Photo
-              </button>
+              <a href="#photo_source" data-rel="popup" data-transition="slideup" class="ui-btn ui-btn-b ui-corner-all ui-btn-inline ui-icon-flat-camera ui-btn-icon-left" data-position-to="window">Photo</a>
+              <div data-role="popup" id="photo_source" data-theme="a">
+                <ul data-role="listview" data-inset="true" style="min-width:210px;">
+                  <li data-role="list-divider">Source</li>
+                  <li><a href="#" class='camera'>Camera</a></li>
+                  <li><a href="#" class='storage'>Storage</a></li>
+                </ul>
+              </div>
               <button class='map ui-btn ui-btn-b ui-btn-inline ui-corner-all ui-icon-flat-location ui-btn-icon-left'>
                 Map
               </button>
 
+              <div id='photo' class='hidden'>
+                <a name='photo'></a>
+
+                <img />
+              </div>
               
               <div id='map' class='hidden'>
                 <a name='map'></a>

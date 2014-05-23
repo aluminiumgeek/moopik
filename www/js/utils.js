@@ -15,7 +15,7 @@ function getResolution() {
 
 function scrollTo(target) {
   if (target) {
-    $('html, body').animate({
+    $('body').animate({
       scrollTop: target.offset().top
     }, 750);
   }
