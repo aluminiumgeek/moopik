@@ -178,7 +178,8 @@ var moopik = (function($) {
   
   function photoOnSuccess(image) {
     log('photoOnSuccess()');
-    $('#photo img').attr('data:image/jpeg;base64,'+image);
+    $('#photo').slideDown('normal');
+    $('#photo img').attr('src', 'data:image/jpeg;base64,'+image);
   }
   
   function photoOnError(msg) {
