@@ -1,9 +1,12 @@
 var moopik = (function($) {
   var self = {};
   
+  var has_photo = false;
+  var has_map = false;
+  
   self.key = "AIzaSyARRMJhNZJamLwkCO5-EZbG-aL5IOkIQ1Q";
   
-  self.width = 500;//getResolution()[0];
+  self.width = 400;//getResolution()[0];
   self.height = getResolution()[1];
   
   self.init = function() {
@@ -49,12 +52,14 @@ var moopik = (function($) {
           scrollTo($('a[name="image"]'));
           map_loading = false;
         });
+        
+        has_map = true;
+        showGenerate();
       }
     }
     
   };
-  //http://maps.googleapis.com/maps/api/staticmap?size=800x400&path=color:0x0000ff|weight:5|55.8180905,37.6353868|55.9180905,37.6353868|55.9180905,37.8353868&markers=color:0x7777ff|55.9180905,37.8353868&geodesic=true&sensors=false
-
+  
   self.locate = function() {
     log('locate()');
     navigator.geolocation.getCurrentPosition(geoOnSuccess, geoOnError);
@@ -172,13 +177,22 @@ var moopik = (function($) {
   
   function photoOnSuccess(imageURI) {
     log('photoOnSuccess()');
-    $('#photo').slideDown('normal');
     $('#photo img').attr('src', imageURI);
+    
+    has_photo = true;
+    showGenerate();
   }
   
   function photoOnError(msg) {
     log('photoOnError()');
     log(msg);
+  }
+  
+  function showGenerate() {
+    log('showGenerate()');
+    if (has_map) {
+      $('.create-canvas').removeClass('hidden');
+    };
   }
   
   $('button.map').bind('click', function() {
@@ -215,6 +229,26 @@ var moopik = (function($) {
     
     navigator.camera.getPicture(photoOnSuccess, photoOnError, options);
   });
+  
+  $('button.create-canvas').bind('click', function() {
+    canvas.init('canvas');
+    
+    $('.canvas-wrapper').slideDown('normal', function() {
+      scrollTo($('a[name="canvas"]'));
+    });
+    
+    if (has_photo) {
+      canvas.top_image($('#photo img').attr('src'));
+    }
+    
+    if (has_map) {
+      canvas.bottom_image($('#map .image img').attr('src'));
+    }
+  });
+  
+  $('button.save-canvas').bind('click', function() {
+    canvas.save();
+  })
   
   return self;
 })(jQuery);

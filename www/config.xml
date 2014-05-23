@@ -54,6 +54,7 @@
     -->
     <gap:plugin name="org.apache.cordova.geolocation" version="0.3.2" />
     <gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
+    <gap:plugin name="org.devgeeks.canvas2imageplugin" version="0.2.0" />
     <!--<gap:plugin name="org.apache.cordova.dialogs" version="0.2.0" />-->
 
     <!-- Define app icon for each platform. -->

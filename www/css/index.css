@@ -93,4 +93,10 @@
   line-height: 22px!important;
 }
 
+.canvas-wrapper {
+  text-align: center;
+}
 
+#canvas {
+  border: 1px solid #eee;
+}
