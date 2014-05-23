@@ -176,10 +176,10 @@ var moopik = (function($) {
     return false;
   }
   
-  function photoOnSuccess(image) {
+  function photoOnSuccess(imageURI) {
     log('photoOnSuccess()');
     $('#photo').slideDown('normal');
-    $('#photo img').attr('src', 'data:image/jpeg;base64,'+image);
+    $('#photo img').attr('src', imageURI);
   }
   
   function photoOnError(msg) {
@@ -211,6 +211,7 @@ var moopik = (function($) {
     
     var options = {
       allowEdit: true,
+      destinationType: navigator.camera.DestinationType.FILE_URI,
       targetWidth: self.width,
       targetHeight: Math.round(self.width/2)
     }
