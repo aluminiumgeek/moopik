@@ -85,9 +85,9 @@
   font-size: 12px!important;
 }
 
-#map .image, .canvas-wrapper {
+/*#map .image, .canvas-wrapper {
   text-align: center;
-}
+}*/
 
 #home .ui-btn-inline:after {
   line-height: 22px!important;
@@ -99,8 +99,8 @@
 
 #canvas, #map img {
   -webkit-transform: scale(.5);
-  /*-webkit-transform-origin-x: 0;*/
+  -webkit-transform-origin-x: 0;
   transform: scale(.5);
-  /*transform-origin-x: 0;*/
+  transform-origin-x: 0;
 
 }
