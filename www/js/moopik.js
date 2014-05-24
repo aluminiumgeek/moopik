@@ -6,7 +6,7 @@ var moopik = (function($) {
   
   self.key = "AIzaSyARRMJhNZJamLwkCO5-EZbG-aL5IOkIQ1Q";
   
-  self.width = 400;//getResolution()[0];
+  self.width = 600;//getResolution()[0];
   self.height = getResolution()[1];
   
   self.init = function() {
@@ -248,7 +248,15 @@ var moopik = (function($) {
   
   $('button.save-canvas').bind('click', function() {
     canvas.save();
-  })
+  });
+  
+  $('button.share').bind('click', function() {
+    var fileURI = 'file://' + canvas.filename;
+    
+    log(fileURI);
+    
+    window.plugins.socialsharing.share(null, null, fileURI);
+  });
   
   return self;
 })(jQuery);
