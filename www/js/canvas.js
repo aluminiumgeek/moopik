@@ -17,7 +17,7 @@ var canvas = (function() {
         
         context2.drawImage(image, 0, 0, image.width/2, image.height/2);
         
-        for (var i=4; i <= 6 && image.width/i > moopik.width; i+=2) {
+        for (var i=4; i <= 6 && image.width/i >= moopik.width; i+=2) {
           context2.drawImage(canvas2, 0, 0, image.width/i, image.height/i, 0, 0, image.width/i, image.height/i);
         }
         
@@ -56,8 +56,6 @@ var canvas = (function() {
   };
   
   self.save = function() {
-    console.log('canvas.save()');
-    
     window.canvas2ImagePlugin.saveImageDataToLibrary(saveOnSuccess, saveOnError, self.canvas);
   };
   
