@@ -55,7 +55,9 @@ var canvas = (function() {
     image.src = src;
   };
   
-  self.save = function() {
+  self.save = function(callback_save) {
+    self.callback_save = callback_save
+    
     window.canvas2ImagePlugin.saveImageDataToLibrary(saveOnSuccess, saveOnError, self.canvas);
   };
   
@@ -63,7 +65,8 @@ var canvas = (function() {
     log('saveOnSuccess()');
     log(msg);
     
-    $('button.share').show();
+    self.callback_save();
+    
     canvas.filename = msg;
   }
   

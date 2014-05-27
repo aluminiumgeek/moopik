@@ -16,7 +16,7 @@ var moopik = (function($) {
   }
   
   var map_loading = false;
-  self.map = function() {
+  self.map = function(callback) {
     log('self.map()');
     
     if (!map_loading) {
@@ -52,6 +52,8 @@ var moopik = (function($) {
           scrollTo($('a[name="image"]'));
           map_loading = false;
         });
+        
+        setTimeout(callback, 3000);
         
         has_map = true;
         showGenerate();
@@ -209,7 +211,14 @@ var moopik = (function($) {
   });
   
   $('button.generate-map').bind('click', function() {
-    self.map();
+    $(this).addClass('disabled');
+    
+    var obj = this
+    var callback = function() {
+      $(obj).removeClass('disabled');
+    }
+    
+    self.map(callback);
   });
   
   $('#photo_source .camera, #photo_source .storage').bind('click', function(e) {
@@ -247,7 +256,15 @@ var moopik = (function($) {
   });
   
   $('button.save-canvas').bind('click', function() {
-    canvas.save();
+    $(this).addClass('disabled');
+    
+    var obj = this
+    var callback = function() {
+      $(obj).removeClass('disabled');
+      $('button.share').show();
+    }
+    
+    canvas.save(callback);
   });
   
   $('button.share').bind('click', function() {

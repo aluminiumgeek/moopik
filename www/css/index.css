@@ -104,3 +104,11 @@
   transform-origin-x: 0;
 
 }
+
+.ui-btn {
+  transition: opacity 200ms linear;
+}
+
+.disabled {
+  opacity: 0.5;
+}
