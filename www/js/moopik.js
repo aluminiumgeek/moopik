@@ -155,8 +155,8 @@ var moopik = (function($) {
       var address = location.address ? location.address : coords;
       
       
-      html += '<input type="checkbox" name="location-{0}" value="{2}" id="location-{0}">\
-      <label for="location-{0}" class="ui-btn-c">{1}</label>'.format(i, address, coords.replace(/ /g, ''));
+      html += '<input data-raw="{3}" type="checkbox" name="location-{0}" value="{2}" id="location-{0}">\
+      <label for="location-{0}" class="ui-btn-c">{1}</label>'.format(i, address, coords.replace(/ /g, ''), results.rows.item(i).location.replace(/"/g, 'j43bnfk'));
     }
     
     form = form.format(html);
@@ -205,9 +205,21 @@ var moopik = (function($) {
   });
   
   $('button.clear').bind('click', function() {
-    self.db.transaction(function(tx) {
-      tx.executeSql('DROP TABLE locations');
-    }, dbErr, self.init);
+    var locations_cnt = 0;
+    $('.locations input[type="checkbox"]:checked').each(function() {
+      locations_cnt++;
+      
+      var location = $(this).attr('data-raw').replace(/j43bnfk/g, '"')
+      
+      self.db.transaction(function(tx) {
+        tx.executeSql('DELETE FROM locations where location = ?', [location]);
+      }, dbErr);
+    });
+    
+    if (locations_cnt > 0) {
+      setTimeout(self.init, 1000);
+    }
+    
   });
   
   $('button.generate-map').bind('click', function() {
