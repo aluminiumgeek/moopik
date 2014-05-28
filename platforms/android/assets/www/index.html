@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="css/flatui.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Moopik</title>
+    </head>
+    <body>
+        <div class="app" data-role="page" id='home'>
+            <!--<div id='log'>log</div>-->
+            
+            <div data-role="header">
+                <h1>Moopik</h1>
+                <button class='clear ui-btn ui-btn-d ui-btn-inline ui-corner-all ui-icon-flat-cross ui-btn-icon-left'>
+                  Clear
+                </button>
+            </div>
+            <div role="main" class="ui-content">
+              <div id='locations'></div>
+
+              <a href="#photo_source" data-rel="popup" data-transition="none" class="ui-btn ui-btn-b ui-corner-all ui-btn-inline ui-icon-flat-camera ui-btn-icon-left">Photo</a>
+              <div data-role="popup" id="photo_source" data-theme="a">
+                <ul data-role="listview" data-inset="true" style="min-width:210px;">
+                  <li data-role="list-divider">Source</li>
+                  <li><a href="#" class='camera'>Camera</a></li>
+                  <li><a href="#" class='storage'>Storage</a></li>
+                </ul>
+              </div>
+              <button class='map ui-btn ui-btn-b ui-btn-inline ui-corner-all ui-icon-flat-location ui-btn-icon-left'>
+                Map
+              </button>
+
+              <div id='photo' class='hidden'>
+                <a name='photo'></a>
+
+                <img />
+              </div>
+              
+              <div id='map' class='hidden'>
+                <a name='map'></a>
+                <div class="ui-field-contain">
+                  <label for="horizontal">Horizontal:</label>
+                  <select name="horizontal" data-role="slider" data-mini="true">
+                    <option value="0">Off</option>
+                    <option value="1">On</option>
+                  </select>
+                </div>
+                <div class="ui-field-contain">
+                  <label for="curviness">Curve:</label>
+                  <input type="range" name="curviness" value="6" min="0" max="35" data-highlight="true" data-mini="true">
+                </div>
+
+                <div class="ui-field-contain">
+                  <label for="linecolor">Line color: </label>
+                  <input type="text" name='linecolor' value="blue" />
+                </div>
+                <div class="ui-field-contain">
+                  <label for="markercolor">Marker color: </label>
+                  <input type="text" name='markercolor' value="0x5555ff" />
+                </div>
+
+                <div class="ui-field-contain">
+                  <fieldset data-role="controlgroup" data-type="horizontal">
+                    <legend>Map type:</legend>
+                    <input type="radio" name="maptype" id="roadmap" value="roadmap" checked="checked">
+                    <label for="roadmap">Roadmap</label>
+                    <input type="radio" name="maptype" id="satellite" value="satellite">
+                    <label for="satellite">Satellite</label>
+                    <input type="radio" name="maptype" id="terrain" value="terrain">
+                    <label for="terrain">Terrain</label>
+                    <input type="radio" name="maptype" id="hybrid" value="hybrid">
+                    <label for="hybrid">Hybrid</label>
+                  </fieldset>
+                </div>
+
+                <div class="ui-field-contain">
+                  <button class="generate-map ui-shadow ui-btn-f ui-btn ui-corner-all">Generate map</button>
+                </div>
+
+                <div class='image'>
+                  <a name='image'></a>
+                  <img />
+                </div>
+              </div>
+
+              <button class="create-canvas hidden ui-shadow ui-btn-f ui-btn ui-corner-all">Create canvas</button>
+
+              <div class='canvas-wrapper hidden'>
+                <a name='canvas'></a>
+
+                <canvas id="canvas" width="600" height="600"></canvas>
+
+                <button class="save-canvas ui-shadow ui-btn-g ui-btn ui-corner-all">Save</button>
+              </div>
+
+              <button class="share ui-shadow hidden ui-btn-b ui-btn ui-corner-all" data-file="">Share</button>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/lib/jquery.js"></script>
+        <script type="text/javascript" src="js/lib/jquery.mobile-1.4.2.min.js"></script>
+        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/utils.js"></script>
+        <script type="text/javascript" src="js/curved_line.js"></script>
+        <script type="text/javascript" src="js/moopik.js"></script>
+        <script type="text/javascript" src="js/canvas.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            //app.initialize();
+        </script>
+    </body>
+</html>
