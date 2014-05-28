@@ -27,6 +27,7 @@
 /home/mihail/dev/moopik/platforms/android/assets/www/res \
 /home/mihail/dev/moopik/platforms/android/assets/www/plugins/ru.aluminiumgeek.Canvas2ImagePlugin \
 /home/mihail/dev/moopik/platforms/android/assets/www/plugins/org.apache.cordova.dialogs \
+/home/mihail/dev/moopik/platforms/android/assets/www/plugins/org.apache.cordova.camera \
 /home/mihail/dev/moopik/platforms/android/assets/www/plugins/nl.x-services.plugins.socialsharing \
 /home/mihail/dev/moopik/platforms/android/assets/www/plugins/ru.aluminiumgeek.Canvas2ImagePlugin/www \
 /home/mihail/dev/moopik/platforms/android/assets/www/plugins/ru.aluminiumgeek.Canvas2ImagePlugin/www/Canvas2ImagePlugin.js \
@@ -34,6 +35,11 @@
 /home/mihail/dev/moopik/platforms/android/assets/www/plugins/org.apache.cordova.dialogs/www/android \
 /home/mihail/dev/moopik/platforms/android/assets/www/plugins/org.apache.cordova.dialogs/www/notification.js \
 /home/mihail/dev/moopik/platforms/android/assets/www/plugins/org.apache.cordova.dialogs/www/android/notification.js \
+/home/mihail/dev/moopik/platforms/android/assets/www/plugins/org.apache.cordova.camera/www \
+/home/mihail/dev/moopik/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js \
+/home/mihail/dev/moopik/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/Camera.js \
+/home/mihail/dev/moopik/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js \
+/home/mihail/dev/moopik/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraConstants.js \
 /home/mihail/dev/moopik/platforms/android/assets/www/plugins/nl.x-services.plugins.socialsharing/www \
 /home/mihail/dev/moopik/platforms/android/assets/www/plugins/nl.x-services.plugins.socialsharing/www/SocialSharing.js \
 /home/mihail/dev/moopik/platforms/android/assets/www/img/logo.png \

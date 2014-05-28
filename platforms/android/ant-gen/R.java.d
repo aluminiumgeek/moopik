@@ -6,4 +6,9 @@
 /home/mihail/dev/moopik/platforms/android/res/drawable-ldpi/icon.png \
 /home/mihail/dev/moopik/platforms/android/res/xml/config.xml \
 /home/mihail/dev/moopik/platforms/android/res/drawable/icon.png \
+/home/mihail/dev/moopik/platforms/android/ant-build/res/drawable-hdpi/icon.png \
+/home/mihail/dev/moopik/platforms/android/ant-build/res/drawable-mdpi/icon.png \
+/home/mihail/dev/moopik/platforms/android/ant-build/res/drawable-xhdpi/icon.png \
+/home/mihail/dev/moopik/platforms/android/ant-build/res/drawable-ldpi/icon.png \
+/home/mihail/dev/moopik/platforms/android/ant-build/res/drawable/icon.png \
 /home/mihail/dev/moopik/platforms/android/ant-build/AndroidManifest.xml \

@@ -27,6 +27,34 @@ module.exports = [
         "clobbers": [
             "window.canvas2ImagePlugin"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/CameraConstants.js",
+        "id": "org.apache.cordova.camera.Camera",
+        "clobbers": [
+            "Camera"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js",
+        "id": "org.apache.cordova.camera.CameraPopoverOptions",
+        "clobbers": [
+            "CameraPopoverOptions"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/Camera.js",
+        "id": "org.apache.cordova.camera.camera",
+        "clobbers": [
+            "navigator.camera"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js",
+        "id": "org.apache.cordova.camera.CameraPopoverHandle",
+        "clobbers": [
+            "CameraPopoverHandle"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -35,7 +63,8 @@ module.exports.metadata =
     "nl.x-services.plugins.socialsharing": "4.2.0",
     "org.apache.cordova.dialogs": "0.2.7",
     "org.apache.cordova.geolocation": "0.3.7",
-    "ru.aluminiumgeek.Canvas2ImagePlugin": "0.5.2"
+    "ru.aluminiumgeek.Canvas2ImagePlugin": "0.5.2",
+    "org.apache.cordova.camera": "0.2.9"
 }
 // BOTTOM OF METADATA
 });

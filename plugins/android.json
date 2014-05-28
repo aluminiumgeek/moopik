@@ -19,6 +19,10 @@
                         {
                             "xml": "<feature name=\"Canvas2ImagePlugin\"><param name=\"android-package\" value=\"ru.aluminiumgeek.Canvas2ImagePlugin.Canvas2ImagePlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -42,7 +46,7 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 1
+                            "count": 2
                         }
                     ]
                 }
@@ -60,6 +64,9 @@
             "PACKAGE_NAME": "com.moopik.moopik"
         },
         "ru.aluminiumgeek.Canvas2ImagePlugin": {
+            "PACKAGE_NAME": "com.moopik.moopik"
+        },
+        "org.apache.cordova.camera": {
             "PACKAGE_NAME": "com.moopik.moopik"
         }
     },

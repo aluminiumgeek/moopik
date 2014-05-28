@@ -1,4 +1,7 @@
 /home/mihail/dev/moopik/platforms/android/ant-build/classes.dex : \
+/home/mihail/dev/moopik/platforms/android/ant-build/classes/org/apache/cordova/camera/ExifHelper.class \
+/home/mihail/dev/moopik/platforms/android/ant-build/classes/org/apache/cordova/camera/CameraLauncher.class \
+/home/mihail/dev/moopik/platforms/android/ant-build/classes/org/apache/cordova/camera/FileHelper.class \
 /home/mihail/dev/moopik/platforms/android/ant-build/classes/org/apache/cordova/dialogs/Notification$4$1.class \
 /home/mihail/dev/moopik/platforms/android/ant-build/classes/org/apache/cordova/dialogs/Notification$2$3.class \
 /home/mihail/dev/moopik/platforms/android/ant-build/classes/org/apache/cordova/dialogs/Notification$5.class \

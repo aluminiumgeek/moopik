@@ -13,6 +13,9 @@
     <feature name="Canvas2ImagePlugin">
         <param name="android-package" value="ru.aluminiumgeek.Canvas2ImagePlugin.Canvas2ImagePlugin" />
     </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
     <name>Moopik</name>
     <description>
         Traveler's path application
@@ -39,7 +42,7 @@
     <preference name="KeepRunning" value="true" />
     <gap:plugin name="org.apache.cordova.geolocation" version="0.3.2" />
     <gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
-    <gap:plugin name="ru.0x80.canvas2imageplugin" version="0.5.2" />
+    <gap:plugin name="ru.aluminiumgeek.canvas2imageplugin" version="0.5.2" />
     <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.0.8" />
     <icon src="icon.png" />
     <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36-ldpi.png" />
