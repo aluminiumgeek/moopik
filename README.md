@@ -4,7 +4,7 @@ moopik
 Android app for travelers
 
 ##Download##
-![1](https://chart.googleapis.com/chart?chs=116x116&cht=qr&chl=http://build.phonegap.com/apps/926917/install/?qr_key=Yzyokzpnq8py5dsAMaPk&chld=L|1&choe=UTF-8)
+![1](http://i.imgur.com/YIQCmVE.png)
 
 ##Screenshots##
 ![1](http://i.imgur.com/4SzFFyF.jpg) 
