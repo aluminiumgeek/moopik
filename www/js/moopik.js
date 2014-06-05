@@ -238,6 +238,9 @@ var moopik = (function($) {
     
     $('#photo_source').popup("close");
     
+    log('Camera status:');
+    log(JSON.stringify(navigator.camera));
+    
     var options = {
       allowEdit: true,
       destinationType: navigator.camera.DestinationType.FILE_URI,
